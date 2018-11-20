@@ -62,6 +62,19 @@ ded: %U")
         )
       )
 
+  ;; @ebaker - TODO update colors
+  ;; from http://pragmaticemacs.com/emacs/org-mode-basics-vi-a-simple-todo-list/
+  ;; set priority range from A to C with default A
+  (setq org-highest-priority ?A)
+  (setq org-lowest-priority ?C)
+  ;; (setq org-default-priority ?A)
+
+  ;;set colours for priorities
+  (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
+                             (?B . (:foreground "LightSteelBlue"))
+                             (?C . (:foreground "OliveDrab"))))
+
+
   ;; TODO consider a refile & schedule function
   (defun eliot/org-agenda-refile ()
     (interactive)
