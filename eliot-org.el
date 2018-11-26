@@ -1,10 +1,21 @@
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map "e" 'org-agenda-week-view)
+  (define-key org-agenda-mode-map "S" 'org-save-all-org-buffers)
+  (define-key org-agenda-mode-map "s" 'org-agenda-schedule)
+  (define-key org-agenda-mode-map "w" 'org-agenda-refile)
+  (define-key org-agenda-mode-map "f" 'org-agenda-set-effort)
+  (define-key org-agenda-mode-map "n" 'org-agenda-later)
+  (define-key org-agenda-mode-map "p" 'org-agenda-earlier)
+  (define-key org-agenda-mode-map "x" 'org-agenda-bulk-mark)
+)
 (with-eval-after-load 'org
 
   ;; @ebaker - custom todo keywords
   ;; https://emacs.stackexchange.com/questions/31466/all-todos-how-to-set-different-colors-for-different-categories
   (setq org-todo-keywords
         '(
-          (sequence "TODO" "NEXT" "|" "DONE")
+          (sequence "TODO" "|" "DONE")
+          ;; (sequence "TODO" "NEXT" "|" "DONE")
           ))
 
   ;; @ebaker - TODO does this work or need debugging?
@@ -45,9 +56,20 @@ ded: %U")
   ;; @ebaker - org-refile
   ;; @ebaker - TODO source?
   ;; Targets include this file and any file contributing to the agenda - up to 4 levels deep
-  (setq org-refile-targets (quote ((nil :maxlevel . 2)
-                                   (org-agenda-files :maxlevel . 2))))
+  ;; (setq org-refile-targets (quote ((nil :maxlevel . 2)
+  ;;                                  (org-agenda-files :maxlevel . 2))))
+  ;; (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
+
+  (setq org-refile-targets (quote (("~/org/people.org" :maxlevel . 1)
+                                   ("~/org/todo.org" :maxlevel . 1)
+                                   ;; (concat org-directory "/yara.org" :maxlevel . 1)
+                                   ("~/org/emacs.org" :maxlevel . 1)
+                                   ("~/org/org.org" :maxlevel . 1)
+                                   )))
+
   (setq org-completion-use-ido nil)
+
+  ;; Refile to the Top Level
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
