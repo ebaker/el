@@ -10,11 +10,6 @@
 )
 (with-eval-after-load 'org
 
-  ;; (add-hook 'org-agenda-mode-hook
-  ;;           (lambda ()
-  ;;             (local-set-key (kbd "x") 'org-agenda-bulk-mark)))
-
-
   ;; @ebaker - custom todo keywords
   ;; https://emacs.stackexchange.com/questions/31466/all-todos-how-to-set-different-colors-for-different-categories
   (setq org-todo-keywords
