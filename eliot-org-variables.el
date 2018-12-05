@@ -35,6 +35,18 @@
         ("DONE" . (:foreground "#A2FF38" :weight bold))
         ))
 
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-todo ((t (:foreground "#ff39a3" :weight bold))))
+ ;; '(org-agenda-clocking ((t (:background "red2"))) t)
+ ;; '(org-agenda-done ((t (:foreground "ForestGreen"))))
+ '(org-done ((t (:foreground "#A2FF38" :weight bold))))
+ )
+
 ;; TODO idk
 (make-face 'eliot-todo-face)
 (set-face-foreground 'eliot-todo-face "#ff39a3")
