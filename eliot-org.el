@@ -22,6 +22,7 @@
 
   ;; @ebaker - TODO does this work or need debugging?
   ;; https://www.computerhope.com/cgi-bin/htmlcolor.pl?c=FF39A3
+
   (setq org-tag-faces
         '(("TODO" . (:foreground "#ff39a3" :weight bold))
           ("DONE" . (:foreground "#A2FF38" :weight bold))
@@ -33,7 +34,7 @@
 
 
   ;; @ebaker - custom bullets
-  (setq org-bullets-bullet-list '("◉" "◇" "○" "▻" "⌑"))
+  ;; (setq org-bullets-bullet-list '("◉" "◇" "○" "▻" "⌑"))
   ;; (setq org-bullets-bullet-list '("▣" "▢" "￭" "⌑" "▪" "▫"))
   ;; (setq org-bullets-bullet-list '("▢" "￭" "￮" "●" "▣"))
   ;; (setq org-bullets-bullet-list '("▢" "⬡" "◇" "￮" "▻"))
@@ -94,9 +95,9 @@ ded: %U")
   ;; (setq org-default-priority ?A)
 
   ;;set colours for priorities
-  (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
-                             (?B . (:foreground "LightSteelBlue"))
-                             (?C . (:foreground "OliveDrab"))))
+  (setq org-priority-faces '((?A . (:foreground "#FF9538"))
+                             (?B . (:foreground "#FFB638"))
+                             (?C . (:foreground "#FFD738"))))
 
 
   ;; TODO consider a refile & schedule function
@@ -118,6 +119,8 @@ ded: %U")
 
 ;; (use-package htmlize
 ;;   :ensure t)
+(setq hl-todo-mode nil)
+
 )
 
 ;; mermaid
