@@ -10,6 +10,8 @@
 )
 (with-eval-after-load 'org
 
+  (require 'ox-confluence)
+
   ;; @ebaker - custom todo keywords
   ;; https://emacs.stackexchange.com/questions/31466/all-todos-how-to-set-different-colors-for-different-categories
   (setq org-todo-keywords
@@ -62,7 +64,7 @@ ded: %U")
 
   (setq org-refile-targets (quote (("~/org/people.org" :maxlevel . 1)
                                    ("~/org/todo.org" :maxlevel . 1)
-                                   ;; (concat org-directory "/yara.org" :maxlevel . 1)
+                                   ("~/org/yara.org" :maxlevel . 1)
                                    ("~/org/emacs.org" :maxlevel . 1)
                                    ("~/org/org.org" :maxlevel . 1)
                                    )))
@@ -105,6 +107,59 @@ ded: %U")
 ;; @ebaker - re-map org-meta-return
 (org-defkey org-mode-map [(meta return)] 'org-meta-return)
 
+;; org-reveal
+;; https://cestlaz.github.io/posts/using-emacs-11-reveal/
+;; (use-package ox-reveal
+;;   :ensure ox-reveal)
+;; (require 'ox-reveal)
+
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+;; (setq org-reveal-mathjax t)
+
+;; (use-package htmlize
+;;   :ensure t)
 )
+
+;; mermaid
+;; (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t)))
+
+;; plantuml
+(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+(setq org-plantuml-jar-path (expand-file-name "~/Downloads/plantuml.jar"))
+
+;; eliot js - testing
+(add-to-list 'auto-mode-alist '("\\.js[x]?$" . web-mode))
+
+;; eliot - mmm-graphql
+(require 'graphql-mode)
+(require 'mmm-mode)
+
+(mmm-add-classes
+ '((js-graphql
+    :submode graphql-mode
+    :face mmm-declaration-submode-face ;; mmm-code-submode-face
+    :front "[^a-zA-Z]gql`" ;; regex to find the opening tag
+    :back "`"))) ;; regex to find the closing tag
+;; (mmm-add-mode-ext-class 'js2-mode nil 'js-graphql)
+(mmm-add-mode-ext-class 'web-mode nil 'js-graphql)
+
+;; eliot - mmm-styled-components
+(require 'css-mode)
+(require 'mmm-mode)
+
+(mmm-add-classes
+ '((js-css
+    :submode css-mode
+    :face mmm-declaration-submode-face ;; mmm-code-submode-face
+    :front "styled\..*`" ;; regex to find the opening tag
+    :back "`"))) ;; regex to find the closing tag
+;; (mmm-add-mode-ext-class 'js2-mode nil 'js-graphql)
+(mmm-add-mode-ext-class 'web-mode nil 'js-css)
+
+
+(setq mmm-global-mode 'maybe)
+;; Optional configuration that hides the background color for a highlighted block
+;; I find it useful for debugging emacs, but when actually coding I dont want so much emphasis on submodes
+(setq mmm-submode-decoration-level 0)
 
 (provide 'eliot-org)

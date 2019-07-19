@@ -16,7 +16,7 @@
 
 (setq org-agenda-files (list (concat org-directory "/people.org")
                              (concat org-directory "/todo.org")
-                             ;; (concat org-directory "/yara.org")
+                             (concat org-directory "/yara.org")
                              (concat org-directory "/emacs.org")
                              (concat org-directory "/org.org")
 
