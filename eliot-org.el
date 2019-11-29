@@ -10,6 +10,15 @@
 )
 (with-eval-after-load 'org
 
+
+  ;;  (with-eval-after-load 'visual-fill-column
+  ;;   (add-hook 'visual-fill-column-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
+  ;;   (setq split-window-preferred-function 'visual-fill-column-split-window-sensibly)
+  ;;   (advice-add 'text-scale-adjust :after 'visual-fill-column-adjust))
+
+  (setq org-startup-indented t) ; Enable `org-indent-mode' by default
+  (add-hook 'org-mode-hook #'visual-line-mode)
+
   (require 'ox-confluence)
 
   ;; @ebaker - custom todo keywords
@@ -63,11 +72,16 @@ ded: %U")
   ;;                                  (org-agenda-files :maxlevel . 2))))
   ;; (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 2))))
 
-  (setq org-refile-targets (quote (("~/org/people.org" :maxlevel . 1)
-                                   ("~/org/todo.org" :maxlevel . 1)
+  (setq org-refile-targets (quote (
                                    ("~/org/yara.org" :maxlevel . 1)
+                                   ("~/org/todo.org" :maxlevel . 1)
+                                   ("~/org/notes.org" :maxlevel . 2)
+                                   ("~/org/people.org" :maxlevel . 1)
+                                   ("~/org/maybe.org" :maxlevel . 1)
                                    ("~/org/emacs.org" :maxlevel . 1)
                                    ("~/org/org.org" :maxlevel . 1)
+                                   ("~/org/habits.org" :maxlevel . 1)
+                                   ("~/org/computer.org" :maxlevel . 1)
                                    )))
 
   (setq org-completion-use-ido nil)
@@ -86,6 +100,11 @@ ded: %U")
           ("D" "[D]one tasks list" tags "+TODO=\"DONE\"-crypt")
         )
       )
+
+  ;; @ebaker - agenda show five days starting yesterday - https://emacs.stackexchange.com/questions/12517/how-do-i-make-the-timespan-shown-by-org-agenda-start-yesterday
+  (setq org-agenda-start-day "-1d")
+  (setq org-agenda-span 5)
+  (setq org-agenda-start-on-weekday nil)
 
   ;; @ebaker - TODO update colors
   ;; from http://pragmaticemacs.com/emacs/org-mode-basics-vi-a-simple-todo-list/

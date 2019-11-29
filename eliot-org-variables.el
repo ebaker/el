@@ -14,11 +14,14 @@
 ;; org-directory
 (setq org-directory "~/org")
 
-(setq org-agenda-files (list (concat org-directory "/people.org")
+(setq org-agenda-files (list
                              (concat org-directory "/todo.org")
+                             (concat org-directory "/notes.org")
                              (concat org-directory "/yara.org")
+                             (concat org-directory "/people.org")
                              (concat org-directory "/emacs.org")
                              (concat org-directory "/org.org")
+                             (concat org-directory "/habits.org")
 
                              ;; @ebaker TODO - should capture files be hidden from day agenda view
                              (concat org-directory "/capture-emacs.org")
